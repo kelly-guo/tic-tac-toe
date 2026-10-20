@@ -51,7 +51,7 @@ function Player(name, mark){
 
 }
 
-function Game(name1,name2){
+function Game(name1,name2, gameboard){
     const playerOne = Player(name1,"O");
     const playerTwo = Player(name2,"X");
 
@@ -59,10 +59,30 @@ function Game(name1,name2){
     let gameOver = false;
 
     function playRound(index) {
-        if (getBoard().placeMark(index,activePlayer.mark)==-1) return;
-        if (checkWin(activePlayer.mark)) return;
-        if (checkTie()) return;
+        if (gameboard.placeMark(index,activePlayer.mark)==-1) return;
+        if (gameboard.checkWin(activePlayer.mark)) {
+            gameOver=true;
+            return;
+        }
+        if (gameboard.checkTie()) {
+            gameOver=true;
+            return;
+        }
         activePlayer==playerOne ? activePlayer=playerTwo : activePlayer=playerOne;
     }
 
 }
+
+const startBtn=document.querySelector(".start-button");
+
+startBtn.addEventListener("click", function (){
+
+    const name1=document.getElementById("name1").value;
+    const name2=document.getElementById("name2").value;
+
+    const board= new Gameboard();
+    const game = Game(name1,name2);
+
+
+
+});

@@ -14,18 +14,19 @@ const Gameboard = (()=> {
 
         if (gameboard[index]==""){
             gameboard[index]=mark;
+            return true;
         } else {
-            return -1;
+            return false;
         }
 
 
 
     }
 
-    function checkWin(currentPlayer){
+    function checkWin(mark){
 
         winningCombos.some(combination =>{
-            return combination.every(index=>board[index]==currentPlayer);
+            return combination.every(index=>gameboard[index]==mark);
         });
 
     }
@@ -38,7 +39,7 @@ const Gameboard = (()=> {
         gameboard.fill("");
     }
 
-    return { getBoard, placeMark, reset };
+    return { getBoard, placeMark, reset, checkWin, checkTie };
 
 });
 
@@ -51,34 +52,55 @@ function Player(name, mark){
 
 }
 
-function Game(name1,name2, gameboard){
+function Game(name1,name2){
     const playerOne = Player(name1,"O");
     const playerTwo = Player(name2,"X");
 
     let activePlayer = playerOne;
     let gameOver = false;
+    let result = "";
 
     function playRound(index) {
-        if (gameboard.placeMark(index,activePlayer.mark)==-1) return;
+        if (gameOver) return;
+        if (!gameboard.placeMark(index,activePlayer.mark)) return;
         if (gameboard.checkWin(activePlayer.mark)) {
             gameOver=true;
+            result='Player ${activePlayer.name} wins!'
             return;
         }
         if (gameboard.checkTie()) {
             gameOver=true;
+            result='The game ends in a tie!'
             return;
         }
-        activePlayer==playerOne ? activePlayer=playerTwo : activePlayer=playerOne;
+        activePlayer= activePlayer===playerOne ? playerTwo : playerOne;
     }
 
-}
+    return {
+        playRound, getActivePlayer: () =>activePlayer, isOver: () => gameOver, getResult: () => result
+    }
+
+};
 
 const startBtn=document.querySelector(".start-button");
+var name1=document.getElementById("name1").value;
+var name2=document.getElementById("name2").value;
 
 startBtn.addEventListener("click", function (){
 
-    const name1=document.getElementById("name1").value;
-    const name2=document.getElementById("name2").value;
+    var name1=document.getElementById("name1").value;
+    var name2=document.getElementById("name2").value;
+
+    const board= new Gameboard();
+    const game = Game(name1,name2);
+
+
+
+});
+
+const restartBtn=document.querySelector(".restart-button");
+
+restartBtn.addEventListener("click", function (){
 
     const board= new Gameboard();
     const game = Game(name1,name2);

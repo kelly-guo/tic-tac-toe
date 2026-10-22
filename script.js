@@ -82,6 +82,35 @@ function Game(name1,name2){
 
 };
 
+const DisplayController = (()=>{
+
+const startBtn=document.querySelector(".start-button");
+const restartBtn=document.querySelector(".restart-button");
+const name1=document.getElementById("name1");
+const name2=document.getElementById("name2");
+
+const tiles = document.getElementsByClassName("tile");
+const status = document.querySelector(".status-msg");
+
+let game = null;
+
+function render(){
+    const board = Gameboard.getBoard();
+    tiles.forEach((tile,i)=>{
+        tile.textContent=board[i];
+    });
+
+    if (!game){
+        status.textContent="Enter names and press start"
+    } else if (game.isOver){
+        status.textContent=game.getResult();
+    } else {
+        status.textContent=`${game.getActivePlayer().name}'s turn`;
+    }
+}
+
+})
+
 const startBtn=document.querySelector(".start-button");
 var name1=document.getElementById("name1").value;
 var name2=document.getElementById("name2").value;

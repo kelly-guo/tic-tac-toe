@@ -109,31 +109,26 @@ function render(){
     }
 }
 
-})
+function startGame(){
+    Gameboard.reset();
+    game = new Game(name1.value,name2.value);
+    render();
 
-const startBtn=document.querySelector(".start-button");
-var name1=document.getElementById("name1").value;
-var name2=document.getElementById("name2").value;
+}
+startBtn.addEventListener("click", startGame);
+restartBtn.addEventListener("click", startGame);
 
-startBtn.addEventListener("click", function (){
+tiles.forEach((tile,i)=>{
+        tile.addEventListener("click", ()=> {
 
-    var name1=document.getElementById("name1").value;
-    var name2=document.getElementById("name2").value;
+            if (!game) return;
+            game.playRound(i);
+            render();
 
-    const board= new Gameboard();
-    const game = Game(name1,name2);
+        });
+    });
 
+    render();
 
+})();
 
-});
-
-const restartBtn=document.querySelector(".restart-button");
-
-restartBtn.addEventListener("click", function (){
-
-    const board= new Gameboard();
-    const game = Game(name1,name2);
-
-
-
-});

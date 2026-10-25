@@ -3,6 +3,8 @@
     grid-template-columns: 100px 100px 100px;
     grid-auto-rows: 100px;
     gap: 4px;
+    margin-inline: auto;
+    place-content: center;
 }
 
 .tile {
@@ -14,6 +16,53 @@
     cursor: pointer;
 }
 
+.tile:hover {
+    background: linear-gradient(to left, rgb(221, 214, 206), rgb(195, 186, 175));
+}
+
 .headers {
     margin-bottom: 10px;
+    text-align: center;
+}
+
+.buttons {
+
+    margin-bottom: 10px;
+    text-align: center;
+    display: grid;
+    grid-column: 50px 50px;
+    grid-row: 100px 100px;
+    gap: 5px;
+    max-width: 400px;
+    margin-inline: auto;
+
+}
+
+.buttons button {
+    border-radius: 7px;
+    border: none;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 5px 0px;
+    border: 1px solid black;
+}
+
+.buttons button:hover {
+    background: linear-gradient(to right, #3498db, #9b5de5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-color: transparent; /* Ensures the button body doesn't block the text */
+    border-color: #3498db;
+}
+
+
+
+.restart-button {
+    grid-column: 2;
+}
+
+.status-msg {
+
+    text-align: center;
+
 }

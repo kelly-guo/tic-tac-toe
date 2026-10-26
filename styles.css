@@ -1,3 +1,7 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .gameboard{
     display: grid;
     grid-template-columns: 100px 100px 100px;
@@ -47,7 +51,7 @@
     border: 1px solid black;
 }
 
-.buttons button:hover {
+.start-button:hover {
     background: linear-gradient(to right, #3498db, #9b5de5);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -55,7 +59,27 @@
     border-color: #3498db;
 }
 
+.restart-button:hover {
+    background: linear-gradient(to right, #db8534, #e55d5d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-color: transparent; /* Ensures the button body doesn't block the text */
+    border-color: #db6c34;
+}
 
+/* TO THIS (No space): */
+.player1-input:focus {
+    outline: none; /* Removes the default blue/black browser ring */
+    border-color: #3498db;
+    box-shadow: 1 0 0 3px rgba(61, 151, 255, 0.3);
+}
+
+/* Optional: Add it for Player 2 as well */
+.player2-input:focus {
+    outline: none;
+    border-color: #db8534; /* Custom orange to match your restart button */
+    box-shadow: 1 0 0 3px rgba(219, 133, 52, 0.3);
+}
 
 .restart-button {
     grid-column: 2;

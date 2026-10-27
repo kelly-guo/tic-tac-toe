@@ -77,6 +77,10 @@ const DisplayController = (() => {
         const board = Gameboard.getBoard();
         tiles.forEach((tile, i) => {
             tile.textContent = board[i];
+            tile.classList.remove("x", "o");  
+            if (board[i]=="X") tile.classList.add("x");
+            if (board[i]=="O") tile.classList.add("o");
+            
         });
 
         if (!game) {

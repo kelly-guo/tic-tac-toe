@@ -20,13 +20,37 @@
     cursor: pointer;
 }
 
+.tile.x {
+
+    background: linear-gradient(to right, #3498db, #7358f8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.tile.o {
+
+    background: linear-gradient(to right, #db8534, #e55d5d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-color: transparent; /* Ensures the button body doesn't block the text */
+
+}
+
 .tile:hover {
-    background: linear-gradient(to left, rgb(221, 214, 206), rgb(195, 186, 175));
+
+    border-color: rgb(149, 147, 145);
+    border-style: dotted;
 }
 
 .headers {
     margin-bottom: 10px;
     text-align: center;
+
+    background: linear-gradient(to right, #3498db, #f86d58);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-color: transparent; 
 }
 
 .buttons {
@@ -89,4 +113,12 @@
 
     text-align: center;
 
+    border: solid black 2px;
+    max-width: 200px;
+    margin: auto;
+    margin-top: 30px;
+    padding: 10px;
+
 }
+
+/*add swapping colours depending on player, hover and marks

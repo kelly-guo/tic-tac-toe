@@ -15,12 +15,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.5rem;
+    font-size: 3em;
     border: 2px solid #333;
     cursor: pointer;
+    transition: transform 0.15s;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
 }
 
-.tile.x {
+.x {
 
     background: linear-gradient(to right, #3498db, #7358f8);
     -webkit-background-clip: text;
@@ -28,7 +30,7 @@
 
 }
 
-.tile.o {
+.o {
 
     background: linear-gradient(to right, #db8534, #e55d5d);
     -webkit-background-clip: text;

@@ -77,11 +77,20 @@ const DisplayController = (() => {
         const board = Gameboard.getBoard();
         tiles.forEach((tile, i) => {
             tile.textContent = board[i];
-            tile.classList.remove("x", "o");  
-            if (board[i]=="X") tile.classList.add("x");
-            if (board[i]=="O") tile.classList.add("o");
+
+            statusMsg.classList.remove("x", "o");  
+            if (board[i]=="X") {
+                tile.classList.add("x");
+              
+            }
+            if (board[i]=="O") {
+                tile.classList.add("o");
+               
+            }
             
         });
+
+        statusMsg.classList.remove("x", "o");
 
         if (!game) {
             statusMsg.textContent = "Enter names and press start";
@@ -89,6 +98,8 @@ const DisplayController = (() => {
             statusMsg.textContent = game.getResult();
         } else {
             statusMsg.textContent = `${game.getActivePlayer().name}'s turn`;
+            statusMsg.classList.add(game.getActivePlayer().mark.toLowerCase()); //class x or o
+
         }
     }
 

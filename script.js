@@ -77,8 +77,7 @@ const DisplayController = (() => {
         const board = Gameboard.getBoard();
         tiles.forEach((tile, i) => {
             tile.textContent = board[i];
-
-            statusMsg.classList.remove("x", "o");  
+            tile.classList.remove("x", "o");   
             if (board[i]=="X") {
                 tile.classList.add("x");
               
@@ -91,6 +90,11 @@ const DisplayController = (() => {
         });
 
         statusMsg.classList.remove("x", "o");
+        var current = game && !game.isOver() ? game.getActivePlayer() : null
+
+
+        name1.classList.toggle("active", !!current && current.mark === "X");
+        name2.classList.toggle("active", !!current && current.mark === "O");
 
         if (!game) {
             statusMsg.textContent = "Enter names and press start";

@@ -22,6 +22,15 @@
     text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
 }
 
+#name1.active {
+    box-shadow: 0 0 10px 2px #7f7dfe;
+}
+
+#name2.active {
+
+    box-shadow: 0 0 10px 2px #fe7d7d;
+}
+
 .x {
 
     background: linear-gradient(to right, #3498db, #7358f8);
